@@ -33,7 +33,8 @@ namespace BaGet
 
                 var config = new AmazonS3Config
                 {
-                    RegionEndpoint = RegionEndpoint.GetBySystemName(options.Region)
+                    RegionEndpoint = options.Region != null ? RegionEndpoint.GetBySystemName(options.Region) : null,
+                    ServiceURL = options.ServiceUrl
                 };
 
                 if (options.UseInstanceProfile)
